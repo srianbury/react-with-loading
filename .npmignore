@@ -2,3 +2,5 @@
 .babelrc
 jest.config.json
 webpack.config.json
+.eslintrc.json
+.prettierrc
