@@ -1,0 +1,30 @@
+{
+  "name": "react-with-loading",
+  "version": "1.0.0",
+  "description": "React loading HOC",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest --config ./jest.config.json",
+    "test:watch": "npm run test -- --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
