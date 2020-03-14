@@ -1,1 +1,1 @@
-# react-with-loading
+# react-with-loading [![Build Status](https://travis-ci.org/srianbury/react-with-loading.svg?branch=master)](https://travis-ci.org/srianbury/react-with-loading)
