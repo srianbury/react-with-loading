@@ -15,6 +15,23 @@ describe('with loading tests', () => {
 
   const CustomLoader = () => <div>Custom Loader</div>;
 
+  const withCustomLoading = Base =>
+    withLoading(Base, {
+      LoadingFallback: CustomLoader,
+      ErrorFallback: CustomError,
+    });
+  const BaseWithCustomLoading = withCustomLoading(Base);
+
+  const LoaderProp = () => (
+    <div>
+      Loading... I will override the custom loader from the args.
+    </div>
+  );
+
+  const ErrorProp = () => (
+    <div>Error... I will override the custom error from the args</div>
+  );
+
   it('should run without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Base />, div);
@@ -86,5 +103,38 @@ describe('with loading tests', () => {
       />,
     );
     expect(wrapper.find(DefaultLoading).length).toEqual(0);
+  });
+
+  it('should show custom loader from args', () => {
+    const wrapper = mount(<BaseWithCustomLoading loading={true} />);
+    expect(wrapper.find(CustomLoader).length).toEqual(1);
+  });
+
+  it('should show custom error from args', () => {
+    const wrapper = mount(
+      <BaseWithCustomLoading loading={false} error={true} />,
+    );
+    expect(wrapper.find(CustomError).length).toEqual(1);
+  });
+
+  it('should show prop loader when arg loader and prop loader are given', () => {
+    const wrapper = mount(
+      <BaseWithCustomLoading
+        loading={true}
+        LoadingFallback={LoaderProp}
+      />,
+    );
+    expect(wrapper.find(LoaderProp).length).toEqual(1);
+  });
+
+  it('should show prop error when arg error and prop error are given', () => {
+    const wrapper = mount(
+      <BaseWithCustomLoading
+        loading={true}
+        error={true}
+        ErrorFallback={ErrorProp}
+      />,
+    );
+    expect(wrapper.find(ErrorProp).length).toEqual(1);
   });
 });

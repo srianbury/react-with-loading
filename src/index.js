@@ -1,14 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const withLoading = Component => {
+const withLoading = (Component, FallbackOptions = {}) => {
+  const {
+    LoadingFallback: LoadingFallbackArg,
+    ErrorFallback: ErrorFallbackArg,
+  } = FallbackOptions;
+
   const Wrapped = ({
     loading,
     error,
-    ErrorFallback,
-    LoadingFallback,
+    LoadingFallback: LoadingFallbackProp,
+    ErrorFallback: ErrorFallbackProp,
     ...rest
   }) => {
+    const LoadingFallback = getFallback(
+      LoadingFallbackArg,
+      LoadingFallbackProp,
+      DefaultLoading,
+    );
+    const ErrorFallback = getFallback(
+      ErrorFallbackArg,
+      ErrorFallbackProp,
+      DefaultError,
+    );
+
     if (error) {
       return (
         <>
@@ -35,14 +51,30 @@ const withLoading = Component => {
   Wrapped.propTypes = {
     loading: PropTypes.bool.isRequired,
     error: PropTypes.any,
-    ErrorFallback: PropTypes.func,
     LoadingFallback: PropTypes.func,
+    ErrorFallback: PropTypes.func,
   };
   return Wrapped;
 };
 withLoading.propTypes = {
   Component: PropTypes.element,
+  FallbackOptions: PropTypes.shape({
+    LoadingFallback: PropTypes.func,
+    ErrorFallback: PropTypes.func,
+  }),
 };
+
+function getFallback(arg, prop, defaultFallback) {
+  if (prop) {
+    return prop;
+  }
+
+  if (arg) {
+    return arg;
+  }
+
+  return defaultFallback;
+}
 
 const DefaultError = () => <div>Error</div>;
 const DefaultLoading = () => <div>Loading...</div>;
