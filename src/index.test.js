@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, shallow, configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import withLoading, { DefaultError, DefaultLoading } from '.';
 
@@ -10,7 +10,8 @@ describe('with loading tests', () => {
   const Base = () => <div>Example</div>;
   const BaseWithLoading = withLoading(Base);
 
-  const CustomError = () => <div>Custom Error Message</div>;
+  const customErrorMessage = 'Custom Error Message';
+  const CustomError = () => <div>{customErrorMessage}</div>;
   const CustomErrorMessage = ({ error }) => <div>{error}</div>;
 
   const CustomLoader = () => <div>Custom Loader</div>;
@@ -115,6 +116,15 @@ describe('with loading tests', () => {
       <BaseWithCustomLoading loading={false} error={true} />,
     );
     expect(wrapper.find(CustomError).length).toEqual(1);
+  });
+
+  it('should show the text from the custom error from args', () => {
+    const wrapper = mount(
+      <BaseWithCustomLoading loading={false} error={true} />,
+    );
+    expect(wrapper.find(CustomError).text()).toEqual(
+      customErrorMessage,
+    );
   });
 
   it('should show prop loader when arg loader and prop loader are given', () => {
