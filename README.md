@@ -1,5 +1,7 @@
 # react-with-loading [![Build Status](https://travis-ci.org/srianbury/react-with-loading.svg?branch=master)](https://travis-ci.org/srianbury/react-with-loading)
 
+react-with-loading-srian is a react HOC that show your data after it's been fetched, a loader when it's loading, and an error when it fails.
+
 ### Install
 `npm i react-with-loading-srian`
 
