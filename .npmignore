@@ -1,5 +1,6 @@
 /src
 /images
+*.test.js
 .babelrc
 jest.config.json
 webpack.config.json
