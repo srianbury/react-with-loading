@@ -1,4 +1,4 @@
-# react-with-loading [![Build Status](https://travis-ci.org/srianbury/react-with-loading.svg?branch=master)](https://travis-ci.org/srianbury/react-with-loading)
+# react-with-loading [![Build Status](https://travis-ci.org/srianbury/react-with-loading.svg?branch=master)](https://travis-ci.org/srianbury/react-with-loading) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 react-with-loading-srian is a react HOC that shows your data after it's been fetched, a loader when it's loading, and an error if it fails.
 
