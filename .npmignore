@@ -1,5 +1,6 @@
-/src
-/images
+src/
+images/
+coverage/
 *.test.js
 .babelrc
 jest.config.json
