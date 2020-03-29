@@ -26,23 +26,11 @@ const withLoading = (Component, FallbackOptions = {}) => {
     );
 
     if (error) {
-      return (
-        <>
-          {ErrorFallback ? (
-            <ErrorFallback error={error} />
-          ) : (
-            <DefaultError />
-          )}
-        </>
-      );
+      return <ErrorFallback error={error} />;
     }
 
     if (loading) {
-      return (
-        <>
-          {LoadingFallback ? <LoadingFallback /> : <DefaultLoading />}
-        </>
-      );
+      return <LoadingFallback />;
     }
 
     return <Component {...rest} />;
