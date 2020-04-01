@@ -1,9 +1,10 @@
 src/
 images/
 coverage/
-*.test.js
+
 .babelrc
-jest.config.json
-webpack.config.json
 .eslintrc.json
 .prettierrc
+.travis.yml
+jest.config.json
+webpack.config.js
